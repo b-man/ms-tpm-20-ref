@@ -90,7 +90,7 @@
 #define MAX_TDES_BLOCK_SIZE_BYTES       \
             MAX(TDES_128_BLOCK_SIZE_BYTES, MAX(TDES_192_BLOCK_SIZE_BYTES, 0))
 
-#define AES_KEY_SIZES_BITS              {128,256}
+#define AES_KEY_SIZES_BITS              128,256
 #define AES_KEY_SIZE_BITS_128           AES_ALLOWED_KEY_SIZE_128
 #define AES_KEY_SIZE_BITS_256           AES_ALLOWED_KEY_SIZE_256
 #define MAX_AES_KEY_BITS                256
@@ -201,6 +201,10 @@
 #define VENDOR_COMMAND_COUNT            0
 #define MAX_VENDOR_BUFFER_SIZE          1024
 #define TPM_MAX_DERIVATION_BITS         8192
+#define PRIMES                          5
+#define MAX_RSA_PRIME_SIZE              MAX_RSA_KEY_BYTES/2
+#define RSA_PRIVATE_SIZE                (PRIMES*MAX_RSA_PRIME_SIZE)
+#define PRIVATE_VENDOR_SPECIFIC_BYTES   RSA_PRIVATE_SIZE
 
 // Table 0:2 - Defines for Implemented Algorithms
 #define ALG_AES                         ALG_YES
@@ -453,6 +457,14 @@ typedef UINT16              TPM_ECC_CURVE;
             0x04, 0x20
 
 // Table 1:17 - Defines for AES Symmetric Cipher Algorithm Constants
+#define AES_128                     YES
+#define AES_192                     YES
+#define AES_256                     YES
+#define AES_MAX_KEY_SIZE_BITS       256
+#define AES_MAX_BLOCK_SIZE          16
+#define AES_BLOCK_SIZES             \
+            AES_128_BLOCK_SIZE_BYTES, AES_192_BLOCK_SIZE_BYTES,                    \
+            AES_256_BLOCK_SIZE_BYTES
 #define AES_ALLOWED_KEY_SIZE_128    YES
 #define AES_ALLOWED_KEY_SIZE_192    YES
 #define AES_ALLOWED_KEY_SIZE_256    YES
@@ -461,10 +473,14 @@ typedef UINT16              TPM_ECC_CURVE;
 #define AES_256_BLOCK_SIZE_BYTES    16
 
 // Table 1:18 - Defines for SM4 Symmetric Cipher Algorithm Constants
+#define SM4_128                     NO
 #define SM4_ALLOWED_KEY_SIZE_128    YES
 #define SM4_128_BLOCK_SIZE_BYTES    16
 
 // Table 1:19 - Defines for CAMELLIA Symmetric Cipher Algorithm Constants
+#define CAMELLIA_128                    NO
+#define CAMELLIA_192                    NO
+#define CAMELLIA_256                    NO
 #define CAMELLIA_ALLOWED_KEY_SIZE_128   YES
 #define CAMELLIA_ALLOWED_KEY_SIZE_192   YES
 #define CAMELLIA_ALLOWED_KEY_SIZE_256   YES
@@ -473,6 +489,8 @@ typedef UINT16              TPM_ECC_CURVE;
 #define CAMELLIA_256_BLOCK_SIZE_BYTES   16
 
 // Table 1:17 - Defines for TDES Symmetric Cipher Algorithm Constants
+#define TDES_128                    NO
+#define TDES_192                    NO
 #define TDES_ALLOWED_KEY_SIZE_128   YES
 #define TDES_ALLOWED_KEY_SIZE_192   YES
 #define TDES_128_BLOCK_SIZE_BYTES   8

@@ -196,7 +196,6 @@ srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptEccKeyExchange.c
 srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptEccMain.c
 srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptEccSignature.c
 srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptHash.c
-srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptHashData.c
 srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptPrime.c
 srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptPrimeSieve.c
 srcs-y += tpm_symlink/TPMCmd/tpm/src/crypt/CryptRand.c
